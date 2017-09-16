@@ -13,7 +13,8 @@
 			}
 		}
 
-		_propertiesChanged() {
+		_propertiesChanged(...args) {
+			super._propertiesChanged(...args);
 			this.update();
 		}
 
@@ -26,13 +27,12 @@
 		}
 
 		ready() {
+			super.ready();
+
 			this.constructor.finalize(this.localName);
 			if (!this.shadowRoot) {
 				this.attachShadow({mode: 'open'});
 			}
-			
-			super.ready();
-			
 		}
 
 	}

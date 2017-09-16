@@ -36,15 +36,11 @@
 		}
 
 		ready() {
-			// need to call super early so PropertyAccessors work
 			super.ready();
 
 			this.header = 'my default header';
 			this.more = 'Lorem Ipmsum...';
 			this.items = [{name: 'aname'}, {name: 'bname'}];
-
-			// need to manually call render here as we can't call it in the GrainLitElement itself as it would be called with undefined values
-			render(this.render(), this.shadowRoot);
 		}
 
 		constructor() {
