@@ -1,0 +1,16 @@
+{
+  "name": "grain-lit-element",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "lit-html": "^0.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "update-lit": "npm i && cp -R node_modules/lit-html/ lit-html-no-module && find lit-html-no-module/lib/*.js lit-html-no-module/lit-html.js -exec sed -i 's/export //g' {} \";\""
+  },
+  "author": "",
+  "license": "ISC"
+}

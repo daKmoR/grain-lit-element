@@ -1,0 +1,73 @@
+{
+  "_args": [
+    [
+      "lit-html@0.6.0",
+      "/mnt/c/html/grain-lit-element"
+    ]
+  ],
+  "_from": "lit-html@0.6.0",
+  "_id": "lit-html@0.6.0",
+  "_inBundle": false,
+  "_integrity": "sha512-H8CmAxZ9kdhiEyrcKNBlFF4pREp5/BKzIPE3EggKISEMT10Ez6WxwR3mzGPUfwgjTX9UQHAzLMtpn4tNkqS5sg==",
+  "_location": "/lit-html",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "lit-html@0.6.0",
+    "name": "lit-html",
+    "escapedName": "lit-html",
+    "rawSpec": "0.6.0",
+    "saveSpec": null,
+    "fetchSpec": "0.6.0"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/lit-html/-/lit-html-0.6.0.tgz",
+  "_spec": "0.6.0",
+  "_where": "/mnt/c/html/grain-lit-element",
+  "author": {
+    "name": "The Polymer Authors"
+  },
+  "bugs": {
+    "url": "https://github.com/PolymerLabs/lit-html/issues"
+  },
+  "dependencies": {},
+  "description": "HTML template literals in JavaScript",
+  "devDependencies": {
+    "@types/chai": "^4.0.1",
+    "@types/mocha": "^2.2.41",
+    "chai": "^4.0.2",
+    "mocha": "^3.4.2",
+    "tslint": "^5.7.0",
+    "typedoc": "^0.8.0",
+    "typescript": "^2.4.1",
+    "uglify-es": "^3.0.27",
+    "web-component-tester": "^6.0.1"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "homepage": "https://github.com/PolymerLabs/lit-html#readme",
+  "license": "BSD-3-Clause",
+  "main": "lit-html.js",
+  "module": "lit-html.js",
+  "name": "lit-html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PolymerLabs/lit-html.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "checksize": "uglifyjs lit-html.js -mc --toplevel | gzip -9 | wc -c",
+    "format": "find src test | grep '\\.js$\\|\\.ts$' | xargs clang-format --style=file -i",
+    "gen-docs": "typedoc --readme none --mode modules --excludeNotExported --excludePrivate --exclude **/*_test.ts --out ./docs/api .",
+    "lint": "tslint --project ./",
+    "posttest": "rm -f bower_components",
+    "pretest": "npm run posttest; ln -s node_modules bower_components",
+    "test": "npm run build && wct -l chrome && npm run lint"
+  },
+  "typings": "lit-html.d.ts",
+  "version": "0.6.0"
+}

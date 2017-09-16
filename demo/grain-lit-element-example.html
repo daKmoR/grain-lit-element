@@ -1,0 +1,69 @@
+<link rel="import" href="../GrainLitElement.html">
+<script>
+	class GrainLitElementExample extends GrainLitElement {
+
+		/****
+		* The following code is currently not possible as GrainLitElement only uses PropertyAccessors.
+		* PropertyEffects seems to be a whole different beast... 
+		static get properties() {
+			return {
+				header: {
+					type: String,
+					value: 'Init name',
+					observer: '_headerCalled'
+				},
+				text: {
+					type: String,
+					value: 'Lorem ipsum...',
+					observer: 'b'
+				},
+				items: {
+					type: Array,
+					value: [{name: 'aname'}, {name: 'bname'}],
+					observer: 'b'
+				}
+			};
+		}
+
+		// would never get called due to missing PropertyEffects
+		_headerCalled() {
+			alert('observer called');
+		}
+		*/
+
+		static get observedAttributes() {
+			return ['header', 'more', 'items'];
+		}
+
+		ready() {
+			// need to call super early so PropertyAccessors work
+			super.ready();
+
+			this.header = 'my default header';
+			this.more = 'Lorem Ipmsum...';
+			this.items = [{name: 'aname'}, {name: 'bname'}];
+
+			// need to manually call render here as we can't call it in the GrainLitElement itself as it would be called with undefined values
+			render(this.render(), this.shadowRoot);
+		}
+
+		constructor() {
+			super();
+		}
+	
+		render() {
+			return html`
+				<h3>${this.header}</h3>
+				<div>${this.more}</div>
+				<ul>
+					${this.items.map(item => html`
+						<li>${item.name}</li>
+					`)}
+				</ul>
+			`;
+		}
+
+	}
+
+	customElements.define('grain-lit-element-example', GrainLitElementExample);
+</script>
