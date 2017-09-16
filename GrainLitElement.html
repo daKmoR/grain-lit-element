@@ -14,6 +14,10 @@
 		}
 
 		_propertiesChanged() {
+			this.update();
+		}
+
+		update() {
 			render(this.render(), this.shadowRoot);
 		}
 

@@ -19,6 +19,13 @@
 	<demo-snippet>
 		<template>
 			<grain-lit-element-example></grain-lit-element-example>
+			<button onclick="document.querySelector('grain-lit-element-example').header = 'something new';">Change Header</button>
+			<button onclick="document.querySelector('grain-lit-element-example').more = 'The Text has changed';">Change More Text</button>
+			<button onclick="document.querySelector('grain-lit-element-example').items = [{name: 'first'}, {name: 'second'}, {name: 'third'}];">Change Items Array</button>
+			<button onclick="document.querySelector('grain-lit-element-example').items[0].name = 'should have changed before';">Change first sub item (needs manual update)</button>
+
+			<br /><br />
+			<button onclick="document.querySelector('grain-lit-element-example').update();">manual update</button>
 		</template>
 	</demo-snippet>
 
