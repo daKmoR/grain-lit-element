@@ -1,17 +1,8 @@
-<link rel="import" href="../polymer/lib/mixins/property-accessors.html">
 <link rel="import" href="import-lit-html.html">
+<link rel="import" href="properties-element.html">
 
 <script>
-	class GrainLitElement extends Polymer.PropertyAccessors(HTMLElement) {
-
-		static finalize(name) {
-			const proto = this.prototype;
-			if (!proto.hasOwnProperty('__finalized')) {
-				this.createPropertiesForAttributes();
-				proto.__finalized = true;
-				return true;
-			}
-		}
+	class GrainLitElement extends Polymer.PropertiesElement {
 
 		_propertiesChanged(...args) {
 			super._propertiesChanged(...args);
@@ -19,20 +10,16 @@
 		}
 
 		update() {
-			render(this.render(), this.shadowRoot);
+			if (this.shadowRoot) {
+				render(this.render(), this.shadowRoot);
+			}
 		}
 
 		connectedCallback() {
-			this._enableProperties();
-		}
-
-		ready() {
-			super.ready();
-
-			this.constructor.finalize(this.localName);
 			if (!this.shadowRoot) {
 				this.attachShadow({mode: 'open'});
 			}
+			super.connectedCallback();
 		}
 
 	}

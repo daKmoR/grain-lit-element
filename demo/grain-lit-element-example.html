@@ -2,9 +2,7 @@
 <script>
 	class GrainLitElementExample extends GrainLitElement {
 
-		/****
-		* The following code is currently not possible as GrainLitElement only uses PropertyAccessors.
-		* PropertyEffects seems to be a whole different beast... 
+		// currently no support for default values
 		static get properties() {
 			return {
 				header: {
@@ -12,7 +10,7 @@
 					value: 'Init name',
 					observer: '_headerCalled'
 				},
-				text: {
+				more: {
 					type: String,
 					value: 'Lorem ipsum...',
 					observer: 'b'
@@ -25,28 +23,19 @@
 			};
 		}
 
-		// would never get called due to missing PropertyEffects
-		_headerCalled() {
-			alert('observer called');
-		}
-		*/
-
-		static get observedAttributes() {
-			return ['header', 'more', 'items'];
-		}
-
-		ready() {
-			super.ready();
-
+		// provide default values in constructor for now
+		constructor() {
+			super();
 			this.header = 'my default header';
 			this.more = 'Lorem Ipmsum...';
 			this.items = [{name: 'aname'}, {name: 'bname'}];
 		}
 
-		constructor() {
-			super();
+		// currently no support for observers
+		_headerCalled() {
+			alert('observer called');
 		}
-	
+
 		render() {
 			return html`
 				<h3>${this.header}</h3>
