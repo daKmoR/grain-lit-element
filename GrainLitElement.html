@@ -4,8 +4,30 @@
 <script>
 	class GrainLitElement extends Polymer.PropertiesElement {
 
-		_propertiesChanged(...args) {
-			super._propertiesChanged(...args);
+		constructor() {
+			super();
+			let propsKeys = Object.keys(this.constructor.properties);
+			for (let i=0; i < propsKeys.length; i++) {
+				let propName = propsKeys[i];
+				let prop = this.constructor.properties[propName];
+				if (prop.value) {
+					this._setProperty(propName, prop.value);
+				}
+			}
+		}
+
+		_propertiesChanged(allValues, newValues, oldValues, passOn) {
+			super._propertiesChanged(allValues, newValues, oldValues, passOn);
+			let propNames = Object.keys(newValues);
+			for (let i=0; i < propNames.length; i++) {
+				let propName = propNames[i];
+				let observerFunctionName = this.constructor.properties[propName].observer;
+				if (observerFunctionName) {
+					if (this[observerFunctionName]) {
+						this[observerFunctionName](newValues[propName], oldValues[propName]);
+					}
+				}
+			}
 			this.update();
 		}
 

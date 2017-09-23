@@ -2,7 +2,6 @@
 <script>
 	class GrainLitElementExample extends GrainLitElement {
 
-		// currently no support for default values
 		static get properties() {
 			return {
 				header: {
@@ -12,28 +11,17 @@
 				},
 				more: {
 					type: String,
-					value: 'Lorem ipsum...',
-					observer: 'b'
+					value: 'Lorem ipsum...'
 				},
 				items: {
 					type: Array,
-					value: [{name: 'aname'}, {name: 'bname'}],
-					observer: 'b'
+					value: [{name: 'aname'}, {name: 'bname'}]
 				}
 			};
 		}
 
-		// provide default values in constructor for now
-		constructor() {
-			super();
-			this.header = 'my default header';
-			this.more = 'Lorem Ipmsum...';
-			this.items = [{name: 'aname'}, {name: 'bname'}];
-		}
-
-		// currently no support for observers
-		_headerCalled() {
-			alert('observer called');
+		_headerCalled(newValue, oldValue) {
+			console.log('header updated to ' + newValue);
 		}
 
 		render() {
