@@ -1,6 +1,8 @@
-import { html, render } from './node_modules/lit-html/lit-html.js';
+import { html, render } from '../lit-html/lib/lit-extended.js';
 
 const GrainLitElement = superclass => class extends superclass {
+  static get useShadowDom() { return true; }
+
   constructor() {
     super();
     this.__data = {};
@@ -8,14 +10,11 @@ const GrainLitElement = superclass => class extends superclass {
     this._observerMethods = {};
     this._shadyTemplate = document.createElement('template');
     this._shadyPrepared = false;
-    this.useShadowDom = typeof this.useShadowDom === 'boolean' ? this.useShadowDom : true;
-    if (this.useShadowDom) {
+    this.renderTarget = this;
+    if (this.constructor.useShadowDom) {
       this.attachShadow({ mode: 'open' });
+      this.renderTarget = this.shadowRoot;
     }
-    if (typeof this.renderTarget === 'undefined') {
-      this.renderTarget = this.useShadowDom ? this.shadowRoot : this;
-    }
-    this.renderTarget = this.renderTarget ? this.renderTarget : this.shadowRoot;
 
     const { properties } = this.constructor;
     this._wait = true;
@@ -176,7 +175,7 @@ const GrainLitElement = superclass => class extends superclass {
   }
 
   createDomIdMap() {
-    const idNodes = this.shadowRoot.querySelectorAll('[id]');
+    const idNodes = this.renderTarget.querySelectorAll('[id]');
     const map = {};
     idNodes.forEach((idNode) => {
       map[idNode.getAttribute('id')] = idNode;
@@ -189,7 +188,7 @@ const GrainLitElement = superclass => class extends superclass {
   }
 
   update() {
-    this._render(this.render(), this.shadowRoot);
+    this._render(this.render(), this.renderTarget);
   }
 
   updateShady() {
