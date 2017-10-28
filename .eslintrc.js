@@ -4,6 +4,7 @@ module.exports = {
     "browser": true
   },
   "globals": {
+    "ShadyCSS": false
   },
   "rules": {
     "no-console": ["error", {
@@ -11,8 +12,6 @@ module.exports = {
     }],
     "no-underscore-dangle": [2, {
       "allowAfterThis": true
-    }],
-
-    "class-methods-use-this": 0,
+    }]
   }
 };

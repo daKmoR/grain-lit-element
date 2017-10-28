@@ -1,4 +1,4 @@
-import {html, render} from './node_modules/lit-html/lit-html.js';
+import { html, render } from './node_modules/lit-html/lit-html.js';
 
 const GrainLitElement = superclass => class extends superclass {
   constructor() {
@@ -27,7 +27,7 @@ const GrainLitElement = superclass => class extends superclass {
         if (typeof propertyOptions === 'object') {
           this._makeGetterSetterForObject(property, propertyOptions);
         } else {
-          console.warn('grain-lit-element: the property ' + property + ' should be an object.');
+          console.warn(`grain-lit-element: the property ${property} should be an object.`);
         }
       });
     }
@@ -72,12 +72,13 @@ const GrainLitElement = superclass => class extends superclass {
   }
 
   overrideSupport(properties) {
+    const result = properties;
     if (typeof this.constructor._overrideValues === 'object') {
       Object.keys(this.constructor._overrideValues).forEach((property) => {
-        properties[property].value = this.constructor._overrideValues[property];
+        result[property].value = this.constructor._overrideValues[property];
       });
     }
-    return properties;
+    return result;
   }
 
   attributeChangedCallback(attributeName, oldValue, newValue) {
