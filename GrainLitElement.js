@@ -16,7 +16,7 @@ const GrainLitElement = superclass => class extends superclass {
       this.renderTarget = this.useShadowDom ? this.shadowRoot : this;
     }
     this.renderTarget = this.renderTarget ? this.renderTarget : this.shadowRoot;
-    
+
     const { properties } = this.constructor;
     this._wait = true;
     if (typeof properties === 'object') {
