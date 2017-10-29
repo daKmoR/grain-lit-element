@@ -8,6 +8,7 @@ const GrainLitElement = superclass => class extends superclass {
     this.__data = {};
     this.__attributeToProperty = {};
     this._observerMethods = {};
+    this._firstRender = true;
     this._shadyTemplate = document.createElement('template');
     this._shadyPrepared = false;
     this.renderTarget = this;
@@ -47,9 +48,9 @@ const GrainLitElement = superclass => class extends superclass {
     });
     delete this._wait;
 
-    this.update();
-    // everything following is after first render
-    this.$ = this.createDomIdMap();
+    if (!this.manualFirstRender) {
+      this.update();
+    }
   }
 
   static get observedAttributes() {
@@ -196,7 +197,16 @@ const GrainLitElement = superclass => class extends superclass {
     this.update();
   }
 
+  afterFirstRender() {
+    this.$ = this.createDomIdMap();
+  }
+
   _render(what, where) {
+    if (this._firstRender === true)  {
+      this._firstRender = false;
+      this.afterFirstRender();
+    }
+
     // use lit-html
     render(what, where);
 
@@ -218,3 +228,4 @@ const GrainLitElement = superclass => class extends superclass {
 };
 
 export default GrainLitElement;
+export { html }
