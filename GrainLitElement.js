@@ -27,7 +27,7 @@ const GrainLitElement = superclass => class extends superclass {
         if (typeof propertyOptions === 'object') {
           this._makeGetterSetterForObject(property, propertyOptions);
         } else {
-          console.warn(`grain-lit-element: the property ${property} should be an object.`);
+          console.warn(`${this.localName}: the property ${property} should be an object.`);
         }
       });
     }
