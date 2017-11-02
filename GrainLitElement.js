@@ -202,13 +202,13 @@ const GrainLitElement = superclass => class extends superclass {
   }
 
   _render(what, where) {
+    // use lit-html
+    render(what, where);
+
     if (this._firstRender === true)  {
       this._firstRender = false;
       this.afterFirstRender();
     }
-
-    // use lit-html
-    render(what, where);
 
     // style using ShadyCSS
     if (typeof ShadyCSS === 'object') {
