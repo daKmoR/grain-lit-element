@@ -188,8 +188,22 @@ const GrainLitElement = superclass => class extends superclass {
     return html`Please provide a render() { return html\`<h2>your html</h2>\` Function in your element`;
   }
 
-  update() {
-    this._render(this.render(), this.renderTarget);
+  /**
+   * Batches renderings which gives a HUGE performance boost.
+   *
+   * Example:
+   *   render() { return html`<my-element a=${a} b=${b} c=${c}><my-element>`; }
+   *
+   * without async it will result in 3 renders. e.g. a changed render, b changed render...
+   * with async it will be 1 render no matter how many properties changed
+   */
+  async update() {
+    if (!this.needsRender) {
+      this.needsRender = true;
+      await 0;
+      this.needsRender = false;
+      this._render(this.render(), this.renderTarget);
+    }
   }
 
   updateShady() {
