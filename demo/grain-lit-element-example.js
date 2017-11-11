@@ -1,5 +1,4 @@
-import GrainLitElement from '../GrainLitElement.js';
-import { html } from '../../lit-html/lit-html.js';
+import GrainLitElement, { html } from '../GrainLitElement.js';
 
 class GrainLitElementExample extends GrainLitElement(HTMLElement) {
   static get properties() {
