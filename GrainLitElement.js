@@ -132,11 +132,10 @@ const GrainLitElement = superclass => class extends superclass {
           }
           // attribute change will trigger attributeChangedCallback so no need to set data yourself
           if (propertyOptions.type === Boolean) {
-            if (value === false) {
-              this.removeAttribute(propertyOptions.reflectToAttribute);
-            } else {
-              this.setAttribute(propertyOptions.reflectToAttribute, '');
-            }
+            value = value === false ? undefined : '';
+          }
+          if (typeof value === 'undefined') {
+            this.removeAttribute(propertyOptions.reflectToAttribute);
           } else {
             this.setAttribute(propertyOptions.reflectToAttribute, value);
           }
