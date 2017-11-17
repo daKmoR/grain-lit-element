@@ -9,8 +9,10 @@
 	
 </head>
 <body>
-<div class="vertical-section-container centered">
-	<grain-lit-element-example header="poop" custom-style="div { background: green; }" ></grain-lit-element-example>
+<div style="width: 900px; margin: 0 auto;">
+	<grain-lit-element-example header="poop" custom-style="div { background: green; }" >
+		<h3>some more stuff</h3>
+	</grain-lit-element-example>
 	<button onclick="document.querySelector('grain-lit-element-example').header = 'something new';">Change Header</button>
 	<button onclick="document.querySelector('grain-lit-element-example').more = 'The Text has changed';">Change More Text</button>
 	<button onclick="document.querySelector('grain-lit-element-example').items = [{name: 'first'}, {name: 'second'}, {name: 'third'}];">Change Items Array</button>
