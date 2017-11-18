@@ -44,7 +44,7 @@ export default class GrainLitElement extends GrainElement {
   }
 
   afterFirstLightDomRender() {
-    // this.$$ = this.createDomClassMap(this);
+    this.$$slot = this.createDomMap(this, 'slot');
   }
 
   _render() {
