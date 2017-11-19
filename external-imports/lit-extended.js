@@ -1,0 +1,1 @@
+export * from '../../lit-html/lib/lit-extended.js';

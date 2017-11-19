@@ -1,6 +1,6 @@
-import { html, render } from './external-imports/lit-extended.js';
-import GrainElement from '../grain-element/GrainElement.js';
-
+<link rel="import" href="./external-imports/lit-extended.html">
+<link rel="import" href="../grain-element/GrainElement.html">
+<script>
 /**
  * Simple Usage example:
  *
@@ -15,7 +15,7 @@ import GrainElement from '../grain-element/GrainElement.js';
  *   }
  * }
  */
-export default class GrainLitElement extends GrainElement {
+class GrainLitElement extends GrainElement {
   constructor() {
     super();
     if (typeof this.renderLightDom === 'function') {
@@ -88,5 +88,4 @@ export default class GrainLitElement extends GrainElement {
   }
 
 };
-
-export { html }
+</script>
