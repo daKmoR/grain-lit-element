@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "lit-html": "^0.7.1"
+    "grain-element": "git+https://github.com/daKmoR/grain-element.git",
+    "lit-html": "git+https://github.com/daKmoR/lit-html.git#feat/dist"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "update-lit": "npm i && cp -R node_modules/lit-html/ lit-html-no-module && find lit-html-no-module/lib/*.js lit-html-no-module/lit-html.js -exec sed -i 's/export //g' {} \";\""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC"

@@ -1,1 +1,1 @@
-export * from '../../lit-html/lib/lit-extended.js';
+export * from '../../lit-html/dist/es/lit-extended.js';
