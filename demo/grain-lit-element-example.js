@@ -1,6 +1,6 @@
 import GrainLitElement, { html } from '../GrainLitElement.js';
 
-class GrainLitElementExample extends GrainLitElement {
+export default class GrainLitElementExample extends GrainLitElement {
   static get properties() {
     return {
       typeName: {

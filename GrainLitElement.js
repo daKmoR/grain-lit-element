@@ -1,4 +1,4 @@
-import { html, render } from './external-imports/lit-extended.js';
+import { html, render } from '../lit-html/lib/lit-extended.js';
 import GrainElement from '../grain-element/GrainElement.js';
 
 /**
