@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "grain-element": "git+https://github.com/daKmoR/grain-element.git",
-    "lit-html": "git+https://github.com/daKmoR/lit-html.git#feat/dist"
+    "lit-html": "^0.7.1"
   },
   "devDependencies": {},
   "scripts": {
